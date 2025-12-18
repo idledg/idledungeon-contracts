@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Environment files (NEVER commit these!)
+.env
+.env.local
+.env.*.local
+
+# Hardhat build artifacts
+cache/
+artifacts/
+typechain/
+typechain-types/
+
+# Coverage reports
+coverage/
+coverage.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

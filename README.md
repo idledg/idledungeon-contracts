@@ -103,10 +103,35 @@ npx hardhat verify --network bscMainnet <CONTRACT_ADDRESS> <CONSTRUCTOR_ARGS>
 
 ## Security
 
+### ✅ Security Status (Updated Dec 18, 2025)
+
+| Feature | Status | Transaction |
+|---------|--------|-------------|
+| **Ownership Renounced** | ✅ Done | All admin roles have been renounced |
+| **Anti-Whale Disabled** | ✅ Done | maxTransferAmount set to 0 (unlimited) |
+| **No Mint Function** | ✅ Safe | Fixed supply, cannot mint new tokens |
+| **Transfer Tax** | ✅ 0% | No buy/sell tax |
+
+### ⚠️ Features in Code (But Unusable)
+
+These features exist in the contract code but **cannot be used** because all roles have been renounced:
+
+- **Blacklist**: Cannot add/remove addresses (no OPERATOR_ROLE holder)
+- **Pause**: Cannot pause transfers (no PAUSER_ROLE holder)
+- **Anti-Whale Settings**: Cannot modify limits (no DEFAULT_ADMIN_ROLE holder)
+
+### Renouncement Transactions
+
+| Role | Transaction Hash |
+|------|------------------|
+| DEFAULT_ADMIN_ROLE | `0x93e625bead25e5d161120af230c05880c834ceb6ee7f4d4db722e51eb2998e59` |
+| PAUSER_ROLE | `0xd2c723d0433a969380d25f541a7426e3050373a8bf1f59ab2cd7ef719c59f9d5` |
+| OPERATOR_ROLE | `0x6210c8a90ef55e47271316e3678c2061174202e7be40e74d7261806aed2391c7` |
+
+### Contract Security Features
+
 - All contracts use OpenZeppelin's battle-tested libraries
-- Role-based access control for sensitive functions
 - Signature verification with expiry to prevent replay attacks
-- Pausable functionality for emergency situations
 - ReentrancyGuard on all state-changing functions
 
 ## License
